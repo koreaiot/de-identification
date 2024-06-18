@@ -1,0 +1,24 @@
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <h5 class="my-3 border-bottom pb-2">User File Upload</h5>
+
+  <form method="post" class="post-form my-3" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {% if form.errors %}
+      <div class="alert alert-danger" role="alert" >
+    {% endif %}
+    <div class="form-group>
+      <label for="imgfile">첨부파일 : </label>
+      <input type="file" class="form-control" name="imgfile" id="imgfile">
+    </div>
+    <div>
+        <br>
+        <button type="submit" class="btn btn-primary">저장하기</button>
+        <br>
+    </div>
+  </form>
+</div>
+{% endblock %}

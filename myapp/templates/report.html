@@ -1,0 +1,42 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+<head>
+    <title>신고 페이지</title>
+</head>
+<div class="container" style="margin-top: 30px; margin-left: 30px;" >
+    <hr>
+    <span
+        style="
+        font-weight: bold;
+        font-size: 1.3em;
+        ">
+         <p>문장 신고하기 &#x1F6A8;</p>
+    </span>
+    <br>
+
+    <body>
+
+        <form action="" method="post">
+
+            {% if alert %}
+                <script>
+                    // JavaScript 코드로 알람 띄우기
+                    alert("필수 값을 채워주세요 !");
+                </script>
+            {% endif %}
+
+            {% csrf_token %}
+            <table>
+                {{ report_form.as_table }}
+            </table>
+            <br>
+
+            <input type="submit" class="btn btn-primary col-2" name="report_submit" id=report_submit value="신고">
+            <input type="submit" class="btn btn-primary col-2" name="report_cancel" id=report_cancel value="신고취소">
+            <output name="result" for="report_form.as_table"></output>
+
+        </form>
+    </body>
+</div>

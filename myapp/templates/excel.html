@@ -1,0 +1,138 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<title>비식별화 TEST</title>
+
+<!--<form action="excel" method="POST">-->
+<!--  {% csrf_token %}-->
+<!--  Excel 파일로 추출을 합니다. (excel)-->
+<!--  <br>-->
+<!--  <button class="btn btn-info" name="excelbtn">샘플 다운로드</button>-->
+
+<!--</form>-->
+
+<!--<br><br><br>-->
+
+<!--<form action="zip_json_excel" method="POST">-->
+<!--  {% csrf_token %}-->
+
+<!--  ZIP파일의 json 샘플을 다운받습니다. (zip_json_excel)-->
+<!--  <br>-->
+<!--  <button class="btn btn-info" name="zip_json_btn">zip 샘플 다운로드 (zip_json_btn)</button>-->
+
+<!--</form>-->
+
+<!--<br><br><br>-->
+
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <span
+        style="
+          font-family: Pretendard;
+          font-size: 28px;
+          font-weight: 800;
+          line-height: 20px;
+          letter-spacing: 0.10000000149011612px;
+          text-align: left;
+        ">비식별화 모듈 데모
+
+      </span>
+    </a>
+  </div>
+</nav>
+
+<form action="zip_json_upload" id="zip_json_upload" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <br>
+      <div class="container" style="margin-left: 18px;" >
+          <span
+            style="
+              font-family: Pretendard;
+              font-size: 20px;
+              font-weight: 700;
+              line-height: 20px;
+              letter-spacing: 0.10000000149011612px;
+              text-align: left;
+            ">
+            파일 업로드를 통한 비식별화
+          </span>
+      </div>
+
+
+
+    <div class="container" style="margin-top: 30px; margin-left: 18px;" >
+      <span
+        style="
+            font-family: Pretendard;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            letter-spacing: -0.01em;
+            text-align: left;
+        ">
+        1. zip파일을 등록하세요.
+      </span>
+    </div>
+    <div class="container" style="margin-top: 10px; margin-left: 18px;" >
+        <input type="file" name="file">
+    </div>
+
+
+
+    <div class="container" style="margin-top: 30px; margin-left: 18px;" >
+      <span
+        style="
+            font-family: Pretendard;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 20px;
+            letter-spacing: -0.01em;
+            text-align: left;
+        ">
+        <label for="userInput">2. Key 값을 입력하세요.</label>
+      </span>
+    </div>
+
+    <div class="container" style="margin-top: 5px; margin-left: 18px;" >
+        <input type="text" id="userInput" name="userInput">
+        <input type="submit" class="btn btn-primary col-1" name="zipjsonBtn" id=zipjsonBtn value="분석 시작" style="margin-left: 18px;">
+
+    </div>
+
+<!--    <button type="submit">제출</button>-->
+<!--    <button class="btn btn-info" name="file_input_btn">파일 분석 (file_input_btn)</button>-->
+    {% if uploaded_file %}
+        <br><br>
+        파일 이름 : {{uploaded_file.name}}
+         {% if target_key_x %}
+             <script>
+                // JavaScript 코드로 알람 띄우기
+                alert("{{target_key}} 은 존재하지 않습니다!!!");
+             </script>
+        {% endif %}
+        <br><br>
+<!--        {% include 'user_zip.html' %}-->
+<!--        {% include 'progress.html' %}-->
+    {% endif %}
+
+
+
+
+</form>
+
+
+<br><br><br>
+  <div class="container" style="margin-left: 18px;" >
+      <span
+        style="
+          font-family: Pretendard;
+          font-size: 16px;
+          font-weight: 500;
+          line-height: 20px;
+          letter-spacing: -0.01em;
+          text-align: left;
+        ">
+        <a href="{% url 'home' %}"><< 이전 화면으로 가기</a>
+      </span>
+  </div>

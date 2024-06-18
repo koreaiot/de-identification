@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jsTree Example</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+</head>
+<body>
+  <div id="jstree"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+  <script>
+    $(function () {
+      $('#jstree').jstree({
+        'core': {
+          'data': [
+            'Node 1',
+            {
+              'text': 'Node 2',
+              'state': {
+                'opened': true
+              },
+              'children': [
+                'Node 2.1',
+                'Node 2.2'
+              ]
+            }
+          ]
+        }
+      });
+    });
+  </script>
+</body>
+</html>
